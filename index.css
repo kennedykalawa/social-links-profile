@@ -1,0 +1,444 @@
+/* ===================================
+   CSS Reset & Custom Properties
+   =================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors from style guide */
+  --clr-green: hsl(75, 94%, 57%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-grey-700: hsl(0, 0%, 20%);
+  --clr-grey-800: hsl(0, 0%, 12%);
+  --clr-grey-900: hsl(0, 0%, 8%);
+  
+  /* Enhanced colors for better depth */
+  --clr-grey-750: hsl(0, 0%, 16%);
+  
+  /* Typography */
+  --ff-primary: 'Outfit', sans-serif;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  
+  /* Spacing scale */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 2.5rem;   /* 40px */
+  
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 50%;
+  
+  /* Transitions */
+  --transition-fast: 200ms ease-in-out;
+  --transition-medium: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   Base Styles
+   =================================== */
+
+body {
+  font-family: var(--ff-primary);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  background-color: var(--clr-grey-900);
+  color: var(--clr-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle animated background gradient */
+body::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 30% 50%, 
+    hsla(75, 94%, 57%, 0.03) 0%, 
+    transparent 50%
+  );
+  animation: subtleRotate 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes subtleRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================
+   Profile Card
+   =================================== */
+
+.profile-card {
+  background-color: var(--clr-grey-800);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 384px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   Profile Header
+   =================================== */
+
+.profile-header {
+  margin-bottom: var(--space-lg);
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-lg);
+  border: 3px solid var(--clr-grey-750);
+  object-fit: cover;
+  animation: fadeInScale 0.8s ease-out 0.2s both;
+  transition: transform var(--transition-medium), 
+              border-color var(--transition-medium);
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  border-color: var(--clr-green);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.name {
+  font-size: 1.5rem; /* 24px */
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.02em;
+  animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.location {
+  color: var(--clr-green);
+  font-weight: var(--fw-bold);
+  font-size: 0.875rem;
+  animation: fadeIn 0.6s ease-out 0.4s both;
+}
+
+/* ===================================
+   Bio Section
+   =================================== */
+
+.bio {
+  margin-bottom: var(--space-lg);
+  color: hsla(0, 0%, 100%, 0.85);
+  line-height: 1.6;
+  font-size: 0.875rem;
+  animation: fadeIn 0.6s ease-out 0.5s both;
+}
+
+/* ===================================
+   Social Links
+   =================================== */
+
+.social-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.social-links li {
+  animation: fadeInSlide 0.5s ease-out both;
+}
+
+.social-links li:nth-child(1) { animation-delay: 0.6s; }
+.social-links li:nth-child(2) { animation-delay: 0.7s; }
+.social-links li:nth-child(3) { animation-delay: 0.8s; }
+.social-links li:nth-child(4) { animation-delay: 0.9s; }
+.social-links li:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.social-links a {
+  display: block;
+  background-color: var(--clr-grey-700);
+  color: var(--clr-white);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  padding: 0.875rem; /* 14px */
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect with sliding background */
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-green);
+  transition: left var(--transition-medium);
+  z-index: -1;
+}
+
+.social-links a:hover::before,
+.social-links a:focus::before {
+  left: 0;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: var(--clr-grey-900);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(75, 94, 57, 0.3);
+  outline: none;
+}
+
+/* Focus visible for keyboard navigation */
+.social-links a:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 3px;
+}
+
+/* Active state */
+.social-links a:active {
+  transform: translateY(0);
+}
+
+/* ===================================
+   Attribution Footer
+   =================================== */
+
+.attribution {
+  margin-top: var(--space-xl);
+  text-align: center;
+  font-size: 0.75rem; /* 12px */
+  color: hsla(0, 0%, 100%, 0.5);
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-out 1.2s both;
+}
+
+.attribution a {
+  color: var(--clr-green);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.attribution a:hover {
+  color: var(--clr-white);
+  text-decoration: underline;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+/* Small mobile devices (320px - 374px) */
+@media (max-width: 374px) {
+  .profile-card {
+    padding: var(--space-lg);
+  }
+  
+  .avatar {
+    width: 72px;
+    height: 72px;
+  }
+  
+  .name {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  .social-links a {
+    padding: 0.75rem; /* 12px */
+    font-size: 0.8125rem; /* 13px */
+  }
+}
+
+/* Medium mobile devices (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  body {
+    padding: var(--space-lg);
+  }
+}
+
+/* Small tablets and large phones (480px - 767px) */
+@media (min-width: 480px) {
+  .profile-card {
+    max-width: 400px;
+  }
+  
+  .social-links a {
+    padding: 1rem;
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) {
+  body {
+    padding: var(--space-xl);
+  }
+  
+  .profile-card {
+    max-width: 420px;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+  
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+  
+  .name {
+    font-size: 1.625rem; /* 26px */
+  }
+}
+
+/* Desktop and larger (1024px+) */
+@media (min-width: 1024px) {
+  .profile-card {
+    max-width: 456px;
+  }
+  
+  .social-links a:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    padding: var(--space-sm);
+  }
+  
+  .profile-card {
+    padding: var(--space-lg);
+  }
+  
+  .avatar {
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--space-md);
+  }
+  
+  .profile-header {
+    margin-bottom: var(--space-md);
+  }
+  
+  .bio {
+    margin-bottom: var(--space-md);
+  }
+  
+  .social-links ul {
+    gap: var(--space-sm);
+  }
+  
+  .social-links a {
+    padding: var(--space-sm);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  body::before {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .profile-card {
+    border: 2px solid var(--clr-white);
+  }
+  
+  .social-links a {
+    border: 1px solid var(--clr-grey-700);
+  }
+  
+  .social-links a:hover,
+  .social-links a:focus {
+    border-color: var(--clr-green);
+  }
+}
+
+/* Dark mode adjustments (already dark, but for completeness) */
+@media (prefers-color-scheme: light) {
+  /* If you want to add a light mode later, styles would go here */
+}
