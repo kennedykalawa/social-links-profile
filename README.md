@@ -27,12 +27,12 @@ Users should be able to:
 
 ### Screenshot
 
-![Design Preview](./preview.jpg)
+![Design Preview](./scre)
 
 ### Links
 
 - Solution URL: [https://github.com/kennedykalawa/social-links-profile](https://github.com/kennedykalawa/)
-- Live Site URL: [https://kennedykalawa.github.io/portfolio-sample](https://kennedykalawa.github.io/portfolio-sample)
+- Live Site URL: [https://kennedykalawa.github.io/social-links-profile/](https://kennedykalawa.github.io/social-links-profile/)
 
 ## My process
 
