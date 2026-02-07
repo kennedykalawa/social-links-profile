@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Design Preview](./scre)
+![Design Preview](https://github.com/kennedykalawa/social-links-profile/blob/Web-Dev/design/Screenshot_20260207_155427.png)
 
 ### Links
 
